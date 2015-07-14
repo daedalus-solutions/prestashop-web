@@ -32,7 +32,10 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 EXPOSE 80
  
 # Copy site into place.
-ADD prestashop /var/www/site
+RUN cd /tmp
+ADD prestashop.zip /tmp
+RUN apt-get install -y unzip
+RUN unzip prestashop.zip -d /var/www/site/
 RUN chown -R www-data:www-data /var/www/site/
  
 # Update the default apache site with the config we created.
