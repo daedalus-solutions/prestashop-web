@@ -35,9 +35,9 @@ EXPOSE 80
 # Install Prestashop
 RUN cd /tmp
 RUN apt-get install -y wget
-RUN wget http://www.prestashop.com/download/old/prestashop_1.6.1.0.zip
+RUN wget http://www.prestashop.com/download/old/prestashop_1.6.1.2.zip
 RUN apt-get install -y unzip
-RUN unzip prestashop_1.6.1.0.zip -d /var/www/site/
+RUN unzip prestashop_1.6.1.2.zip -d /var/www/site/
 RUN chown -R www-data:www-data /var/www/site/
  
 # Update the default apache site with the config we created.
