@@ -12,7 +12,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 # Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-gd php-pear php-apc php5-curl curl lynx-cur
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-gd php-pear php-apc php5-curl curl lynx-cur php-pecl-memcache
  
 # Enable apache mods.
 RUN a2enmod php5
@@ -44,7 +44,7 @@ RUN chown -R www-data:www-data /var/www/site/
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Add the logic for page compression
-ADD .htaccess /var/www/site/prestashop/.htaccess
+#ADD .htaccess /var/www/site/prestashop/.htaccess
  
 # By default, simply start apache.
 CMD /usr/sbin/apache2ctl -D FOREGROUND;
