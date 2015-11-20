@@ -42,6 +42,9 @@ RUN chown -R www-data:www-data /var/www/site/
  
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+
+# Add the logic for page compression
+ADD .htaccess /var/www/site/prestashop/.htaccess
  
 # By default, simply start apache.
 CMD /usr/sbin/apache2ctl -D FOREGROUND;
